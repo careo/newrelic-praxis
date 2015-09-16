@@ -1,16 +1,16 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'praxis-newrelic/version'
+require 'newrelic-praxis/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "praxis-newrelic"
+  spec.name          = "newrelic-praxis"
   spec.version       = Praxis::NewRelic::VERSION
   spec.authors = ["Josep M. Blanquer","Dane Jensen"]
-  spec.summary       = %q{NewRelic plugin for Praxis.}
+  spec.summary       = %q{New Relic plugin for Praxis.}
   spec.email = ["blanquer@gmail.com","dane.jensen@gmail.com"]
 
-  spec.homepage = "https://github.com/rightscale/praxis-newrelic"
+  spec.homepage = "https://github.com/rightscale/newrelic-praxis"
   spec.license = "MIT"
   spec.required_ruby_version = ">=2.1"
 
