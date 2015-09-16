@@ -6,19 +6,18 @@ DependencyDetection.defer do
   end
 
   depends_on do
-    # TODO: check newrelic config for disabled stuff
-    #!NewRelic::Agent.config[:disable_activerecord_instrumentation] &&
-  #    !NewRelic::Agent::Instrumentation::ActiveRecordSubscriber.subscribed?
+    !NewRelic::Agent.config[:disable_praxis_blueprints_instrumentation]
   end
+
 
   executes do
     ::NewRelic::Agent.logger.info 'Installing Praxis::Blueprint instrumentation'
   end
 
   executes do
-    require 'newrelic-praxis/praxis_blueprint/render_event'
-    require 'newrelic-praxis/praxis_blueprint/render_subscriber'
+    require 'newrelic-praxis/praxis_blueprints/render_event'
+    require 'newrelic-praxis/praxis_blueprints/render_subscriber'
 
-    NewRelic::Agent::Instrumentation::Praxis::Blueprint::RenderSubscriber.subscribe(/^praxis\.blueprint\.render/)
+    NewRelic::Agent::Instrumentation::Praxis::Blueprint::RenderSubscriber.subscribe 'praxis.blueprint.render'.freeze
   end
 end

@@ -6,9 +6,7 @@ DependencyDetection.defer do
   end
 
   depends_on do
-    # TODO: check newrelic config for disabled stuff
-    #!NewRelic::Agent.config[:disable_activerecord_instrumentation] &&
-  #    !NewRelic::Agent::Instrumentation::ActiveRecordSubscriber.subscribed?
+    !NewRelic::Agent.config[:disable_praxis_instrumentation]
   end
 
   executes do
@@ -19,6 +17,6 @@ DependencyDetection.defer do
     require 'newrelic-praxis/praxis/action_event'
     require 'newrelic-praxis/praxis/action_subscriber'
 
-    NewRelic::Agent::Instrumentation::Praxis::ActionSubscriber.subscribe(/^praxis\.request_stage\.execute/)
+    NewRelic::Agent::Instrumentation::Praxis::ActionSubscriber.subscribe 'praxis.request_stage.execute'.freeze
   end
 end
