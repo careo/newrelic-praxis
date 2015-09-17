@@ -9,7 +9,7 @@ module NewRelic::Agent::Instrumentation
 
           # mark views rendered with list of fields
           if self.payload[:fields] && self.payload[:fields].any?
-            view_name << "*"
+            view_name = "#{view_name}*"
           end
 
           "View/#{blueprint_name}/#{view_name}/Rendering"
