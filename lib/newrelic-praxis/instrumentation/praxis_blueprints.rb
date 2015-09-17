@@ -9,7 +9,6 @@ DependencyDetection.defer do
     !NewRelic::Agent.config[:disable_praxis_blueprints_instrumentation]
   end
 
-
   executes do
     ::NewRelic::Agent.logger.info 'Installing Praxis::Blueprint instrumentation'
   end
